@@ -36,23 +36,144 @@
     };
 
     macros {
-        copy: copy {
+        COPY: control {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_COMMAND &kp C>,
-                <&macro_release>;
-
-            label = "COPY";
+            bindings = <&kp LG(C)>;
+            label = "CONTROL";
         };
 
-        paste: paste {
+        PASTE: PASTE {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press>, <&kp LEFT_GUI &kp V>, <&macro_release>;
-
+            bindings = <&kp LG(V)>;
             label = "PASTE";
+        };
+
+        UN_DO: UNDO {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(Z)>;
+            label = "UNDO";
+        };
+
+        REDO: REDO {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(Y)>;
+            label = "REDO";
+        };
+
+        KUT: CUT {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(X)>;
+            label = "CUT";
+        };
+
+        PASTE_NO_F: PASTE_NO_F {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(V))>;
+            label = "PASTE_NO_F";
+        };
+
+        SPEC_PASTE: SPEC_PASTE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(LA(V)))>;
+            label = "SPEC_PASTE";
+        };
+
+        SEL_ALL: SEL_ALL {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(A)>;
+            label = "SEL_ALL";
+        };
+
+        PRT_SCRN: PRT_SCRN {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(N4))>;
+            label = "PRT_SCRN";
+        };
+
+        HOM: HOME {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(A)>;
+            label = "HOME";
+        };
+
+        ND: END {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(E)>;
+            label = "END";
+        };
+
+        FIND: FIND {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(F)>;
+            label = "FIND";
+        };
+
+        EMOJI: EMOJI {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LC(SPACE))>;
+            label = "EMOJI";
+        };
+
+        SPOT_SEARCH: SPOT_SEARCH {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(SPACE)>;
+            label = "SPOT_SEARCH";
+        };
+
+        BOLD: BOLD {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(B)>;
+            label = "BOLD";
+        };
+
+        ITALIC: ITALIC {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(I)>;
+            label = "ITALIC";
+        };
+
+        U_LINE: U_LINE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(U)>;
+            label = "U_LINE";
+        };
+
+        UPPER_CASE: UPPER_CASE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LA(C))>;
+            label = "UPPER_CASE";
+        };
+
+        SUP_SCRIPT: UP_CASE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LC(PLUS))>;
+            label = "UP_CASE";
+        };
+
+        SUB_SCRIPT: LO_CASE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LC(MINUS))>;
+            label = "LO_CASE";
         };
     };
 
@@ -68,10 +189,10 @@
 &kp TAB           &kp Q         &kp W         &kp E   &kp R      &kp T      &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O            &kp P              &kp BSLH
 &kp LEFT_SHIFT    &kp A         &kp S         &kp D   &kp F      &kp G      &kp LEFT_ARROW   &kp H      &kp J      &kp K      &kp L            &kp SEMI           &kp APOS
 &kp LEFT_CONTROL  &kp Z         &kp X         &kp C   &kp V      &kp B      &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA  &kp DOT          &kp FSLH           &kp ENTER
-&to 1             &kp LEFT_ALT  &kp LEFT_GUI  &mo 1   &kp SPACE  &kp RET    &to 3            &kp ENTER  &kp SPACE  &mo 2      &kp RIGHT_SHIFT  &kp RIGHT_CONTROL
+&to 1             &kp LEFT_ALT  &kp LEFT_GUI  &mo 1   &kp SPACE  &kp RET    &kp ENTER        &kp ENTER  &kp SPACE  &mo 2      &kp RIGHT_SHIFT  &kp RIGHT_CONTROL
             >;
 
-            sensor-bindings = <&inc_dec_kp C_NEXT C_PREV>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             display-name = "LAYER 0";
         };
 
@@ -81,7 +202,7 @@
 &kp CAPS   &kp GRAVE  &mkp LCLK  &mkp MCLK  &mkp RCLK  &mkp MB4    &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
 &trans     &kp TILDE  &trans     &trans     &trans     &mkp MB5    &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans     &trans     &trans     &trans     &trans     &trans      &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
-&to 2      &trans     &trans     &trans     &trans     &trans      &to 0            &trans           &trans           &trans      &trans     &trans
+&to 2      &trans     &trans     &trans     &trans     &trans      &mkp MB1         &trans           &trans           &trans      &trans     &trans
             >;
 
             display-name = "LAYER 1";
@@ -92,12 +213,13 @@
             bindings = <
 &kp TILDE  &trans  &trans  &trans  &trans  &trans    &mmv MOVE_UP     &kp F6  &kp F7  &kp F8   &kp F9   &kp F10    &trans
 &trans     &trans  &trans  &trans  &trans  &trans    &mmv MOVE_DOWN   &trans  &trans  &kp F11  &kp F12  &kp UNDER  &kp PLUS
-&trans     &trans  &trans  &copy   &paste  &trans    &mmv MOVE_LEFT   &trans  &trans  &trans   &trans   &kp LBRC   &kp RBRC
+&trans     &trans  &trans  &COPY   &paste  &trans    &mmv MOVE_LEFT   &trans  &trans  &trans   &trans   &kp LBRC   &kp RBRC
 &trans     &trans  &trans  &trans  &trans  &trans    &mmv MOVE_RIGHT  &trans  &trans  &trans   &trans   &trans     &trans
 &to 3      &trans  &trans  &trans  &trans  &trans    &to 1            &trans  &trans  &trans   &trans   &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
+            label = "LAYER 2";
         };
 
         layer_3 {
@@ -108,6 +230,8 @@
 &bootloader  &trans        &trans          &trans        &trans        &trans          &trans  &trans           &trans           &trans           &trans           &trans           &bootloader
 &to 0        &trans        &trans          &trans        &trans        &trans          &to 2   &trans           &trans           &trans           &trans           &trans
             >;
+
+            label = "LAYER 3";
         };
     };
 };
